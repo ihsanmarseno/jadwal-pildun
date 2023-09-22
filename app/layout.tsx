@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import 'moment/locale/id'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,8 +15,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html>
+      <body>
+        <main className='container min-h-screen'>
+          {children}
+        </main>
+        <footer className='p-[40px] bg-zinc-100 mt-[10px]'>
+          Made by Ihsan Marseno
+        </footer>
+        </body>
     </html>
   )
 }

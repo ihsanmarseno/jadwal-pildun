@@ -1,33 +1,57 @@
-import moment from 'moment'
-import React from 'react'
-import Card from '../components/card'
+"use client"
+
+import moment from "moment";
+import React from "react";
+import Card from "../components/card";
+import 'moment/locale/id'
+import { motion, Variants } from "framer-motion";
 
 interface Props {
-    matches? : Match[],
-    date : string,
+  matches?: Match[];
+  date: string;
 }
 
-const DateTitle = ({date} : Props) => {
-  const day = moment(date).format("dddd")
-  const _date = moment(date).format("Do MMM YYYY")
+const DateTitle = ({ date }: Props) => {
+  moment.locale('id')
+  const day = moment(date).format("dddd");
+  const _date = moment(date).format("Do MMMM YYYY");
 
   return (
-    <div className='text-[#182339]'>
-      <span className='font-bold text-3xl'>{day}</span>
-      <span className='text-2xl'>, {_date}</span>
+    <div className="text-[#182339]">
+      <span className="font-bold text-3xl">{day}</span>
+      <span className="text-2xl">, {_date}</span>
     </div>
-  )
-}
+  );
+};
 
-export default function SectionRow({matches, date} : Props) {
+const cardVariants: Variants = {
+  offscreen: {
+    y: 300,
+  },
+  onscreen: {
+    y: 0,
+    rotate: 0,
+    transition: {
+      type: "spring",
+      bounce: 0.3,
+      duration: 0.8,
+    },
+  },
+};
+
+export default function SectionRow({ matches, date }: Props) {
   return (
-    <div className='my-[40px]'>
-      <DateTitle date={date} /> 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px]'>
+    <motion.div
+      className="card-container my-[40px]"
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true, amount: 0.8 }}>
+      <DateTitle date={date} />
+      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] mt-[10px]" variants={cardVariants}>
         {matches?.map((match, index) => (
           <Card key={index} match={match} />
         ))}
-      </div>
-    </div>  
-  )
+      </motion.div>
+    </motion.div>
+  );
 }

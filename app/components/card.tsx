@@ -3,15 +3,15 @@ import React from "react";
 import moment from "moment";
 
 interface CardProps {
-  match?: Match;
+  match: Match;
 }
 
 interface TeamProps {
-  team?: Team;
+  team: Team;
 }
 
 interface VersusProps {
-    date?: string;
+    date: string;
 }
 
 const Team = ({ team }: TeamProps) => {

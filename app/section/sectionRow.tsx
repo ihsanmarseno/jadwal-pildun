@@ -4,7 +4,7 @@ import Card from '../components/card'
 
 interface Props {
     matches? : Match[],
-    date? : string,
+    date : string,
 }
 
 const DateTitle = ({date} : Props) => {
@@ -12,9 +12,9 @@ const DateTitle = ({date} : Props) => {
   const _date = moment(date).format("Do MMM YYYY")
 
   return (
-    <div>
-      <span className='font-bold'>{day}</span>
-      <span>, {_date}</span>
+    <div className='text-[#182339]'>
+      <span className='font-bold text-3xl'>{day}</span>
+      <span className='text-2xl'>, {_date}</span>
     </div>
   )
 }

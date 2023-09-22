@@ -12,6 +12,8 @@ module.exports = {
         DEFAULT : "1rem",
         lg:"10rem"
       }
+    }, fontFamily :{
+      poppins : ['Poppins', 'sans-serif']
     }
   },
   plugins: [],

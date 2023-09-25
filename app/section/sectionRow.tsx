@@ -18,7 +18,7 @@ const DateTitle = ({ date }: Props) => {
 
   return (
     <div className="text-[#182339]">
-      <span className="font-bold text-3xl">{day}</span>
+      <span className="text-3xl font-bold">{day}</span>
       <span className="text-2xl">, {_date}</span>
     </div>
   );
